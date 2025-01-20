@@ -139,7 +139,7 @@
     </style>
 </head>
 
-<body>
+
     <div class="main-container">
         <h1>Quick Analysis</h1>
         <p>Here is a quick snapshot of the tasks status</p>
@@ -160,4 +160,4 @@
             </div>
         </div>
     </div>
-</body>
+

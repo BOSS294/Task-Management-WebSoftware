@@ -27,6 +27,8 @@
     <body>
         <?php include 'Assets/Resources/nav.php'; ?>
         <?php include 'Assets/Dashboard/DM-ANA001.php'; ?>
+        <?php include 'Assets/Dashboard/DM-CCP002.php'; ?>
+
 
     </body>
 </html>

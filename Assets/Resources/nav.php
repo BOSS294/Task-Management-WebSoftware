@@ -14,7 +14,6 @@
             color: #fff;
             min-height: 100vh;
             margin: 0;
-            display: flex;
             justify-content: center;
             align-items: flex-start;
             padding-top: 20px;
@@ -24,6 +23,7 @@
             position: fixed;
             top: 20px;
             width: 90%;
+            margin-left: 15%;
             max-width: 1000px;
             background-color: #1d1d1d;
             box-shadow: 10px 12px 8px rgba(0, 0, 0, 0.2);
