@@ -83,18 +83,7 @@
             color: #fff;
         }
 
-        .nav-icon.notifications::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 12px;
-            height: 12px;
-            background-color: red;
-            border-radius: 50%;
-            border: 2px solid #000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-        }
+        
 
         @media (max-width: 768px) {
             nav {
@@ -166,8 +155,8 @@
             <div class="nav-icon settings">
                 <i class="material-icons">settings</i>
             </div>
-            <div class="nav-icon notifications">
-                <i class="material-icons">notifications</i>
+            <div class="nav-icon notifications" id="backButton">
+                <i class="material-icons">arrow_back</i>
             </div>
         </div>
     </nav>
@@ -179,8 +168,17 @@
         <div class="nav-icon settings">
             <i class="material-icons">settings</i>
         </div>
-        <div class="nav-icon notifications">
-            <i class="material-icons">notifications</i>
+        <div class="nav-icon notifications" id="backButton">
+            <i class="material-icons">arrow_back</i>
         </div>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', () => {
+            history.back(); 
+        });
+    });
+
+</script>

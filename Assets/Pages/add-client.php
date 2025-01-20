@@ -22,17 +22,12 @@
         <meta name="theme-color" content="#ffffff">
         <meta name="format-detection" content="telephone=no">
 
-        <link rel="stylesheet" href="Assets/Styles/scroller.css">
-        <link rel="stylesheet" href="Assets/Styles/control-panel.css">
+        <link rel="stylesheet" href="../Styles/scroller.css">
 
     </head>
 
     <body>
-        <?php include 'Assets/Resources/nav.php'; ?>
-        <?php include 'Assets/Contents/Dashboard/DM-ANA001.php'; ?>
-        <?php include 'Assets/Contents/Dashboard/DM-CCP002.php'; ?>
-        <?php include 'Assets/Contents/Dashboard/DM-TMP003.php'; ?>
-
-        <script src="Assets/Scripts/dashboard.js"></script>
+        <?php include '../Resources/nav.php'; ?>
+        <?php include '../Contents/Pages/DM-ACP001.php'; ?>
     </body>
 </html>

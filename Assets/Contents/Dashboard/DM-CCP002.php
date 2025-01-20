@@ -8,7 +8,7 @@
         ones, and send emails directly from here.</p>
 
         <div class="control-cards">
-            <div class="control-card" data-url="/add-client.html">
+            <div class="control-card" data-url="Assets/Pages/add-client.php">
                 <div class="card-icon material-icons">person_add</div>
                 <h3>Add Client</h3>
                 <p>Effortlessly add new clients to your system with just a few clicks, ensuring a smooth onboarding process.</p>
