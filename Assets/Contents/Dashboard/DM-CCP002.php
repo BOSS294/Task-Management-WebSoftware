@@ -14,7 +14,7 @@
                 <p>Effortlessly add new clients to your system with just a few clicks, ensuring a smooth onboarding process.</p>
             </div>
 
-            <div class="control-card" data-url="/manage-client.html">
+            <div class="control-card" data-url="Assets/Pages/manage-clients.php">
                 <div class="card-icon material-icons">manage_accounts</div>
                 <h3>Manage Client</h3>
                 <p>Streamline client management by easily updating client details and tracking their progress in your system.</p>
