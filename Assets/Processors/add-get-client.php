@@ -1,5 +1,5 @@
 <?php
-require 'Database.php';
+require '../Connectors/connector.php';
 
 
 $db = new Database();
