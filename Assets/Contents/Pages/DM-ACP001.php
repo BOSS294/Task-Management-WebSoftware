@@ -198,6 +198,42 @@
             <button type="submit" class="submit-btn">Add Client</button>
         </form>
     </div>
+    <script>
+        document.querySelector('.form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('client-name').value.trim(),
+                phoneNumber: document.getElementById('phone-number').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                projectName: document.getElementById('project-name').value.trim(),
+                projectDescription: document.getElementById('project-description').value.trim(),
+                budget: parseFloat(document.getElementById('budget').value.trim()),
+                openingBalance: parseFloat(document.getElementById('payment').value.trim())
+            };
+
+            try {
+                const response = await fetch('add-client.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Client added successfully!');
+                } else {
+                    alert('Error adding client: ' + result.message);
+                }
+            } catch (error) {
+                alert('An unexpected error occurred: ' + error.message);
+            }
+        });
+
+    </script>
 </body>
 
 </html>
