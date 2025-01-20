@@ -33,6 +33,6 @@
         <?php include 'Assets/Dashboard/DM-CCP002.php'; ?>
         <?php include 'Assets/Dashboard/DM-TMP003.php'; ?>
 
-
+        <script src="Assets/Scripts/dashboard.js"></script>
     </body>
 </html>
