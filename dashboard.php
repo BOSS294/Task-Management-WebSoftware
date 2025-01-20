@@ -22,12 +22,16 @@
         <meta name="theme-color" content="#ffffff">
         <meta name="format-detection" content="telephone=no">
 
+        <link rel="stylesheet" href="Assets/Styles/scroller.css">
+        <link rel="stylesheet" href="Assets/Styles/control-panel.css">
+
     </head>
 
     <body>
         <?php include 'Assets/Resources/nav.php'; ?>
         <?php include 'Assets/Dashboard/DM-ANA001.php'; ?>
         <?php include 'Assets/Dashboard/DM-CCP002.php'; ?>
+        <?php include 'Assets/Dashboard/DM-TMP003.php'; ?>
 
 
     </body>
