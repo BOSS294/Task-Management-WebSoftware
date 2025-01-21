@@ -193,101 +193,64 @@
             <div class="client-card">
                 <div class="client-info">
                     <div>
-                        <h3>Client 1</h3>
-                        <p>Project: Project Alpha</p>
-                        <p>Open Balance: ₹5000</p>
-                        <p>Closing Balance: ₹4500</p>
-                        <p>Total Tasks Pending: 5</p>
-                        <p>Total Tasks Completed: 10</p>
+                        <h3>Loading...</h3>
+                        <p>Project: Loading...</p>
+                        <p>Open Balance: Loading...</p>
+                        <p>Closing Balance: Loading...</p>
+                        <p>Total Tasks Pending: Loading...</p>
+                        <p>Total Tasks Completed: Loading...</p>
                     </div>
                 </div>
                 <div class="client-buttons">
-                    <button class="view-details">View Details</button>
-                    <button class="update-balance">Update Balance</button>
-                    <button class="check-tasks">Check Tasks</button>
+                    <button class="view-details">Loading...</button>
+                    <button class="update-balance">Loading...</button>
+                    <button class="check-tasks">Loading...</button>
 
                 </div>
             </div>
 
-
-            <div class="client-card">
-                <div class="client-info">
-                    <div>
-                        <h3>Client 2</h3>
-                        <p>Project: Project Beta</p>
-                        <p>Open Balance: ₹7000</p>
-                        <p>Closing Balance: ₹6500</p>
-                        <p>Total Tasks Pending: 3</p>
-                        <p>Total Tasks Completed: 7</p>
-                    </div>
-                </div>
-                <div class="client-buttons">
-                    <button class="view-details">View Details</button>
-                    <button class="update-balance">Update Balance</button>
-                    <button class="check-tasks">Check Tasks</button>
-
-                </div>
-            </div>
-
-
-            <div class="client-card">
-                <div class="client-info">
-                    <div>
-                        <h3>Client 3</h3>
-                        <p>Project: Project Gamma</p>
-                        <p>Open Balance: ₹8000</p>
-                        <p>Closing Balance: ₹7600</p>
-                        <p>Total Tasks Pending: 2</p>
-                        <p>Total Tasks Completed: 12</p>
-                    </div>
-                </div>
-                <div class="client-buttons">
-                    <button class="view-details">View Details</button>
-                    <button class="update-balance">Update Balance</button>
-                    <button class="check-tasks">Check Tasks</button>
-
-                </div>
-            </div>
-
-
-            <div class="client-card">
-                <div class="client-info">
-                    <div>
-                        <h3>Client 4</h3>
-                        <p>Project: Project Delta</p>
-                        <p>Open Balance: ₹6000</p>
-                        <p>Closing Balance: ₹5500</p>
-                        <p>Total Tasks Pending: 8</p>
-                        <p>Total Tasks Completed: 4</p>
-                    </div>
-                </div>
-                <div class="client-buttons">
-                    <button class="view-details">View Details</button>
-                    <button class="update-balance">Update Balance</button>
-                    <button class="check-tasks">Check Tasks</button>
-
-                </div>
-            </div>
-
-
-            <div class="client-card">
-                <div class="client-info">
-                    <div>
-                        <h3>Client 5</h3>
-                        <p>Project: Project Epsilon</p>
-                        <p>Open Balance: ₹2000</p>
-                        <p>Closing Balance: ₹1500</p>
-                        <p>Total Tasks Pending: 1</p>
-                        <p>Total Tasks Completed: 15</p>
-                    </div>
-                </div>
-                <div class="client-buttons">
-                    <button class="view-details">View Details</button>
-                    <button class="update-balance">Update Balance</button>
-                    <button class="check-tasks">Check Tasks</button>
-
-                </div>
-            </div>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const clientCardsWrapper = document.querySelector('.client-cards-wrapper');
+
+        // Fetch clients from the backend
+        fetch('https://vanshthakur.online/Assets/Processors/add-get-client.php?status=all')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    clientCardsWrapper.innerHTML = ''; // Clear previous cards
+                    data.data.forEach(client => {
+                        const clientCard = document.createElement('div');
+                        clientCard.classList.add('client-card');
+
+                        clientCard.innerHTML = `
+                            <div class="client-info">
+                             <div>
+                                <h3>${client.Name}</h3>
+                                <p>Project: ${client.ProjectName}</p>
+                                <p>Open Balance: ₹${client.OpeningBalance}</p>
+                                <p>Closing Balance: ₹${client.ClosingBalance}</p>
+                                <p>Phone: ${client.PhoneNumber}</p>
+                                <p>Status: ${client.ClientStatus}</p>
+                             </div>
+
+                            </div>
+                            <div class="client-buttons">
+                                <button class="view-details">View Details</button>
+                                <button class="update-balance">Update Balance</button>
+                                <button class="check-tasks">Check Tasks</button>
+                            </div>
+                        `;
+                        clientCardsWrapper.appendChild(clientCard);
+                    });
+                } else {
+                    console.error(data.message);
+                }
+            })
+            .catch(error => console.error('Error fetching clients:', error));
+    });
+</script>
+
 </body>
