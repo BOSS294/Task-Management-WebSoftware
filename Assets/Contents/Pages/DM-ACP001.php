@@ -213,7 +213,7 @@
             };
 
             try {
-                const response = await fetch('add-client.php', {
+                const response = await fetch('https://vanshthakur.online/Assets/Processors/add-get-client.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
