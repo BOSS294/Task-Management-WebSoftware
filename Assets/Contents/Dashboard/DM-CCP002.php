@@ -20,7 +20,7 @@
                 <p>Streamline client management by easily updating client details and tracking their progress in your system.</p>
             </div>
 
-            <div class="control-card" data-url="/manage-tasks.html">
+            <div class="control-card" data-url="Assets/Pages/specfic-tasks.php">
                 <div class="card-icon material-icons">task</div>
                 <h3>Manage Specific Tasks</h3>
                 <p>Assign, monitor, and complete tasks efficiently with an intuitive interface to ensure productivity and task completion.</p>

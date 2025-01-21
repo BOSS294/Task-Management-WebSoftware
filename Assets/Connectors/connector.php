@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = 'localhost';
-    private $dbName = 'your_database_name';
-    private $username = 'your_username';
-    private $password = 'your_password';
+    private $dbName = 'veda_docmgm';
+    private $username = 'veda_boss';
+    private $password = 'mayank123';
     private $charset = 'utf8mb4';
     private $pdo;
 
