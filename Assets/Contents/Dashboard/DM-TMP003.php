@@ -4,7 +4,7 @@
 
     <div class="control-cards">
         <!-- Manage/Add Tasks Card -->
-        <div class="control-card" data-url="/manage-add-tasks.html">
+        <div class="control-card" data-url="Assets/Pages/add-manage-tasks.php">
             <div class="card-icon material-icons">playlist_add</div>
             <h3>Manage/Add Tasks</h3>
             <p>Quickly add new tasks or manage existing ones to ensure everything is on track and deadlines are met.</p>

@@ -198,7 +198,7 @@
             <button type="submit" class="submit-btn">Add Client</button>
         </form>
     </div>
-    <script>
+        <script>
         document.querySelector('.form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -224,16 +224,19 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    alert('Client added successfully!');
+                    showToast("Client added successfully!", "success");
+
+                    // Clear all input fields after successful addition
+                    document.querySelector('.form').reset();
                 } else {
-                    alert('Error adding client: ' + result.message);
+                    showToast("Error adding client: " + result.message, "error");
                 }
             } catch (error) {
-                alert('An unexpected error occurred: ' + error.message);
+                showToast("An unexpected error occurred: " + error.message, "error");
             }
         });
-
     </script>
+
 </body>
 
 </html>

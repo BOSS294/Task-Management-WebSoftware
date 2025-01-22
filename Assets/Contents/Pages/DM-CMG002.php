@@ -211,6 +211,7 @@
 
         </div>
     </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const clientCardsWrapper = document.querySelector('.client-cards-wrapper');

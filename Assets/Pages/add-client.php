@@ -23,6 +23,7 @@
         <meta name="format-detection" content="telephone=no">
 
         <link rel="stylesheet" href="../Styles/scroller.css">
+        <script src="../Resources/toastNotification.js"></script>
 
     </head>
 

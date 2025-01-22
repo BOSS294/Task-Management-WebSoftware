@@ -1,6 +1,5 @@
 <head>
     <style>
-        /* Container Styling */
         .client-management {
             text-align: center;
             max-width: 1200px;
@@ -24,7 +23,7 @@
             margin-bottom: 30px;
         }
 
-        /* Search and Filter Wrapper */
+
         .search-filter-wrapper {
             display: flex;
             justify-content: space-between;
@@ -44,7 +43,7 @@
             width: 48%;
         }
 
-        /* Task Card Styling */
+
         .task-cards-wrapper {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -71,7 +70,7 @@
             font-weight: bold;
             color: #fff;
             padding: 5px 10px;
-            border-radius: 5px;
+            border-radius: 15px;
             text-transform: uppercase;
         }
 
@@ -86,6 +85,7 @@
         .high-priority {
             background-color: #dc3545;
         }
+
         .task-card .task-info {
             display: flex;
             align-items: center;
@@ -109,62 +109,76 @@
             color: #b0b0b0;
         }
 
-        /* Task Buttons */
+
+        .task-card .task-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
         .task-card .task-buttons button {
-            padding: 8px;
-            font-size: 0.8rem;
+            flex: 1;
+            padding: 9px 9px;
+            font-size: 0.6rem;
+            font-weight: bolder;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .task-card .task-buttons button.view-details {
-            background-color: #28a745;
+            background-color: #2d6a4f;
         }
 
         .task-card .task-buttons button.update-task {
-            background-color: #ffc107;
+            background-color: #b35c00;
         }
 
         .task-card .task-buttons button.check-tasks {
-            background-color: #dc3545;
+            background-color: #8b0000;
         }
 
         .task-card .task-buttons button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .task-card .task-buttons button:active {
             transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            filter: brightness(0.9);
         }
 
         .task-card .task-buttons button.view-details:hover {
-            background-color: #218838;
+            background-color: #1b4332;
         }
 
         .task-card .task-buttons button.update-task:hover {
-            background-color: #e0a800;
+            background-color: #924800;
         }
 
         .task-card .task-buttons button.check-tasks:hover {
-            background-color: #c82333;
+            background-color: #610000;
         }
 
         .task-card .task-buttons button.view-details:active {
-            background-color: #1e7e34;
+            background-color: #144025;
         }
 
         .task-card .task-buttons button.update-task:active {
-            background-color: #d39e00;
+            background-color: #723600;
         }
 
         .task-card .task-buttons button.check-tasks:active {
-            background-color: #bd2130;
+            background-color: #4b0000;
         }
 
-        /* Add Task Button */
+
         .add-task-btn {
             position: fixed;
             bottom: 20px;
@@ -194,12 +208,25 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+
+        .status-label.pending {
+            color: orange;
+        }
+
+        .status-label.working {
+            color: red;
+        }
+
+        .status-label.completed {
+            color: green;
+        }
+
         .add-task-btn:focus {
             outline: none;
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
-        /* Add Task Popup */
+
         .add-task-popup {
             display: none;
             position: fixed;
@@ -265,10 +292,10 @@
             outline: none;
         }
 
-        .popup-content .floating-label input:focus + label,
-        .popup-content .floating-label input:not(:placeholder-shown) + label,
-        .popup-content .floating-label select:focus + label,
-        .popup-content .floating-label textarea:focus + label {
+        .popup-content .floating-label input:focus+label,
+        .popup-content .floating-label input:not(:placeholder-shown)+label,
+        .popup-content .floating-label select:focus+label,
+        .popup-content .floating-label textarea:focus+label {
             top: -10px;
             left: 10px;
             font-size: 0.85rem;
@@ -280,7 +307,28 @@
             resize: vertical;
         }
 
-        /* Responsive Media Queries */
+        .doc-id {
+            font-size: 1.5rem;
+            font-weight: bolder;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .task-card .task-info p span.task-name {
+            color: #9b5de5;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+
+        .task-card .task-info p span.task-name::before {
+            content: " ";
+            color: #ddd;
+        }
+
+
         @media (max-width: 768px) {
             .task-card {
                 flex-direction: column;
@@ -324,39 +372,51 @@
         <div class="task-cards-wrapper">
 
 
-        <div class="task-card">
-            <div class="priority-label high-priority">High</div>
-            <div class="task-info">
-                <div>
-                    <h3>Task Name</h3>
-                    <p>For Client: Client Name</p>
-                    <p>Status: Pending</p>
-                    <p>Due Date: 01/01/2025</p>
+            <div class="task-card">
+                <div class="priority-label high-priority">High</div>
+                <div class="task-info">
+                    <div>
+                        <h3 class="doc-id">DOC#122</h3>
+                        <p>
+                            Task: <span class="task-name">Task 1</span>
+                        </p>
+                        <p>For Client: Client Name</p>
+                        <p>
+                            Status:
+                            <span class="status-label pending">Pending</span>
+                        </p>
+                        <p>Due Date: 01/01/2025</p>
+                    </div>
+                </div>
+                <div class="task-buttons">
+                    <button class="view-details">Task Details</button>
+                    <button class="update-task">Update Status</button>
+                    <button class="check-tasks">Remove Task</button>
                 </div>
             </div>
-            <div class="task-buttons">
-                <button class="view-details">View Task Details</button>
-                <button class="update-task">Update Status</button>
-                <button class="check-tasks">Remove Task</button>
-            </div>
-        </div>
-        <div class="task-card">
-            <div class="priority-label medium-priority">medium</div>
-            <div class="task-info">
-                <div>
-                    <h3>Task Name</h3>
-                    <p>For Client: Client Name</p>
-                    <p>Status: Pending</p>
-                    <p>Due Date: 01/01/2025</p>
+            <div class="task-card">
+                <div class="priority-label medium-priority">medium</div>
+                <div class="task-info">
+                    <div>
+                        <h3 class="doc-id">DOC#122</h3>
+                        <p>
+                            Task: <span class="task-name">Task 1</span>
+                        </p>
+                        <p>For Client: Client Name</p>
+                        <p>
+                            Status:
+                            <span class="status-label working">Working</span>
+                        </p>
+                        <p>Due Date: 01/01/2025</p>
+                    </div>
+                </div>
+                <div class="task-buttons">
+                    <button class="view-details">Task Details</button>
+                    <button class="update-task">Update Status</button>
+                    <button class="check-tasks">Remove Task</button>
                 </div>
             </div>
-            <div class="task-buttons">
-                <button class="view-details">View Task Details</button>
-                <button class="update-task">Update Status</button>
-                <button class="check-tasks">Remove Task</button>
-            </div>
-        </div>
-        
+
         </div>
 
 
@@ -398,12 +458,10 @@
                 </div>
 
                 <div class="floating-label">
-                    <select id="assignTo" required>
-                        <option value="Assign To">Assign To </option>
+                        <select id="assignTo" required>
+                        <option value="Assign To">Select Project </option>
 
-                        <option value="client1">Client 1</option>
-                        <option value="client2">Client 2</option>
-                        <option value="client3">Client 3</option>
+                        
                     </select>
                 </div>
 
@@ -411,6 +469,7 @@
             </div>
         </div>
     </div>
+    <div id="error-message"></div>
 
     <script>
         function openPopup() {
@@ -420,18 +479,88 @@
         function closePopup() {
             document.getElementById("addTaskPopup").style.display = "none";
         }
+        function fetchClients() {
+            const status = 'all';  
+
+            fetch(`https://vanshthakur.online/Assets/Processors/add-get-client.php?method=GET&status=${status}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const selectElement = document.getElementById("assignTo");
+
+                        selectElement.innerHTML = '<option value="Assign To">Select Project</option>';
+
+                        data.data.forEach(client => {
+                            const option = document.createElement("option");
+                            option.value = client.CID;  
+                            option.textContent = client.ProjectName;  
+                            selectElement.appendChild(option);
+                        });
+                    } else {
+                        console.error('Error fetching clients:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+
 
         function submitTask() {
-            const taskName = document.getElementById("taskName").value;
-            const taskDescription = document.getElementById("taskDescription").value;
-            const priority = document.getElementById("priority").value;
-            const dueDate = document.getElementById("dueDate").value;
-            const reminderTime = document.getElementById("reminderTime").value;
-            const assignTo = document.getElementById("assignTo").value;
+            const taskName = document.getElementById("taskName").value.trim();
+            const taskDescription = document.getElementById("taskDescription").value.trim();
+            const priority = document.getElementById("priority").value.trim();
+            const dueDate = document.getElementById("dueDate").value.trim();
+            const reminderTime = document.getElementById("reminderTime").value.trim();
+            const assignTo = document.getElementById("assignTo").value.trim();
 
-            console.log("Task Added:", taskName, taskDescription, priority, dueDate, reminderTime, assignTo);
+            if (!taskName) {
+                displayError("Task Name is required.");
+                return;
+            }
+            if (!assignTo) {
+                displayError("Assign To field is required.");
+                return;
+            }
 
-            closePopup();
+            const taskData = {
+                taskName,
+                taskDescription,
+                priority,
+                dueDate,
+                reminderTime,
+                assignTo,
+            };
+
+            fetch('https://vanshthakur.online/Assets/Processors/add-get-tasks.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(taskData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Task added successfully! TID: " + data.TID);
+                        closePopup();
+                    } else {
+                        displayError(data.message);
+                    }
+                })
+                .catch(error => {
+                    displayError("An error occurred: " + error.message);
+                });
         }
+
+        function displayError(message) {
+            const errorElement = document.getElementById('error-message'); 
+            if (errorElement) {
+                errorElement.textContent = message;
+            } else {
+                console.error('Error element not found');
+            }
+        }
+
+        fetchClients();
     </script>
 </body>
