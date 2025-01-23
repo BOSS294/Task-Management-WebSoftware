@@ -113,9 +113,9 @@
         }
 
         const sounds = {
-            success: 'https://www.soundjay.com/button/beep-07.wav',
-            error: 'https://www.soundjay.com/button/beep-09.wav',
-            info: 'https://www.soundjay.com/button/beep-10.wav'
+            success: 'https://vanshthakur.online/Assets/Sounds/success.mp3',
+            error: 'https://vanshthakur.online/Assets/Sounds/error.mp3',
+            info: 'https://vanshthakur.online/Assets/Sounds/info.mp3'
         };
 
         const audio = new Audio(sounds[type]);

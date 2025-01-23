@@ -394,28 +394,7 @@
                     <button class="check-tasks">Remove Task</button>
                 </div>
             </div>
-            <div class="task-card">
-                <div class="priority-label medium-priority">medium</div>
-                <div class="task-info">
-                    <div>
-                        <h3 class="doc-id">DOC#122</h3>
-                        <p>
-                            Task: <span class="task-name">Task 1</span>
-                        </p>
-                        <p>For Client: Client Name</p>
-                        <p>
-                            Status:
-                            <span class="status-label working">Working</span>
-                        </p>
-                        <p>Due Date: 01/01/2025</p>
-                    </div>
-                </div>
-                <div class="task-buttons">
-                    <button class="view-details">Task Details</button>
-                    <button class="update-task">Update Status</button>
-                    <button class="check-tasks">Remove Task</button>
-                </div>
-            </div>
+
 
         </div>
 
@@ -562,5 +541,130 @@
         }
 
         fetchClients();
+            // Function to fetch tasks from the backend
+        async function fetchTasks() {
+            try {
+                const response = await fetch('https://vanshthakur.online/Assets/Processors/add-get-tasks.php?action=fetch');
+                const data = await response.json();
+
+                if (data.success) {
+                    renderTasks(data.data);
+                } else {
+                    console.error(data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching tasks:', error);
+            }
+        }
+
+
+        function renderTasks(tasks) {
+            const wrapper = document.querySelector('.task-cards-wrapper');
+            wrapper.innerHTML = ''; 
+
+                tasks.forEach(task => {
+                    const card = document.createElement('div');
+                    card.className = 'task-card';
+
+                    card.innerHTML = `
+                        <div class="priority-label ${task.Priority.toLowerCase()}-priority">${task.Priority}</div>
+                        <div class="task-info">
+                            <div>
+                                <h3 class="doc-id">${task.TID}</h3>
+                                <p>
+                                    Task: <span class="task-name">${task.TaskName}</span>
+                                </p>
+                                <p>For Client: ${task.AssignTo}</p>
+                                <p>
+                                    Status:
+                                    <span class="status-label ${task.TaskStatus.toLowerCase().replace(' ', '-')}"">${task.TaskStatus}</span>
+                                </p>
+                                <p>Due Date: ${task.DueDate || 'N/A'}</p>
+                            </div>
+                        </div>
+                        <div class="task-buttons">
+                            <button class="view-details" data-tid="${task.TID}">Task Details</button>
+                            <button class="update-task" data-tid="${task.TID}">Update Status</button>
+                            <button class="check-tasks" data-tid="${task.TID}">Remove Task</button>
+                        </div>
+                    `;
+
+                    wrapper.appendChild(card);
+                });
+
+                attachButtonEvents(); // Attach event listeners to the buttons
+            }
+
+                // Function to handle button actions
+        function attachButtonEvents() {
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tid = button.getAttribute('data-tid');
+                    console.log('View details for:', tid);
+                    // Fetch and display the task details using the TID
+                    fetch(`https://vanshthakur.online/Assets/Processors/add-get-tasks.php?tid=${tid}&action=view`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log('Task Details:', data.data);
+                                // Add functionality to display task details in a popup/modal
+                            } else {
+                                console.error('Error fetching task details:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+
+            document.querySelectorAll('.update-task').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tid = button.getAttribute('data-tid');
+                    console.log('Update task for:', tid);
+                    fetch('https://vanshthakur.online/Assets/Processors/add-get-tasks.php', {
+                        method: 'PATCH', 
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ tid, action: 'updateStatus' }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log('Task status updated:', data.message);
+                                attachButtonEvents(); 
+                            } else {
+                                console.error('Error updating task:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+
+            document.querySelectorAll('.check-tasks').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tid = button.getAttribute('data-tid');
+                    console.log('Remove task for:', tid);
+                    fetch('https://vanshthakur.online/Assets/Processors/add-get-tasks.php', {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ tid }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log('Task removed successfully:', data.message);
+                                // Refresh the page after successful deletion
+                                location.reload();
+                            } else {
+                                console.error('Error removing task:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+
+        }
+
+
+        document.addEventListener('DOMContentLoaded', fetchTasks);
+
     </script>
 </body>

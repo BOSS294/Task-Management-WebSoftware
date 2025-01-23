@@ -95,59 +95,74 @@
             color: #b0b0b0;
         }
 
-        .client-card .client-buttons button {
-            padding: 8px;
-            font-size: 0.8rem;
+        .client-card .task-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .client-card .task-buttons button {
+            flex: 1;
+            padding: 9px 9px;
+            font-size: 0.6rem;
+            font-weight: bolder;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .client-card .client-buttons button.view-details {
-            background-color: #28a745;
+        .client-card .task-buttons button.view-details {
+            background-color: #2d6a4f;
         }
 
-        .client-card .client-buttons button.update-balance {
-            background-color: #ffc107;
+        .client-card .task-buttons button.update-task {
+            background-color: #b35c00;
         }
 
-        .client-card .client-buttons button.check-tasks {
-            background-color: #dc3545;
+        .client-card .task-buttons button.check-tasks {
+            background-color: #8b0000;
         }
 
-        .client-card .client-buttons button:hover {
-            transform: scale(1.05);
+        .client-card .task-buttons button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .client-card .client-buttons button:active {
+        .client-card .task-buttons button:active {
             transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            filter: brightness(0.9);
         }
 
-        .client-card .client-buttons button.view-details:hover {
-            background-color: #218838;
+        .client-card .task-buttons button.view-details:hover {
+            background-color: #1b4332;
         }
 
-        .client-card .client-buttons button.update-balance:hover {
-            background-color: #e0a800;
+        .client-card .task-buttons button.update-task:hover {
+            background-color: #924800;
         }
 
-        .client-card .client-buttons button.check-tasks:hover {
-            background-color: #c82333;
+        .client-card .task-buttons button.check-tasks:hover {
+            background-color: #610000;
         }
 
-        .client-card .client-buttons button.view-details:active {
-            background-color: #1e7e34;
+        .client-card .task-buttons button.view-details:active {
+            background-color: #144025;
         }
 
-        .client-card .client-buttons button.update-balance:active {
-            background-color: #d39e00;
+        .client-card .task-buttons button.update-task:active {
+            background-color: #723600;
         }
 
-        .client-card .client-buttons button.check-tasks:active {
-            background-color: #bd2130;
+        .client-card .task-buttons button.check-tasks:active {
+            background-color: #4b0000;
         }
+
 
 
         @media (max-width: 768px) {
@@ -201,11 +216,10 @@
                         <p>Total Tasks Completed: Loading...</p>
                     </div>
                 </div>
-                <div class="client-buttons">
-                    <button class="view-details">Loading...</button>
-                    <button class="update-balance">Loading...</button>
-                    <button class="check-tasks">Loading...</button>
-
+                <div class="task-buttons">
+                    <button class="view-details">View/Update</button>
+                    <button class="update-task">Update Status</button>
+                    <button class="check-tasks">Remove Client</button>
                 </div>
             </div>
 
@@ -238,11 +252,11 @@
                              </div>
 
                             </div>
-                            <div class="client-buttons">
-                                <button class="view-details">View Details</button>
-                                <button class="update-balance">Update Balance</button>
-                                <button class="check-tasks">Check Tasks</button>
-                            </div>
+                          <div class="task-buttons">
+                            <button class="view-details">View/Update</button>
+                            <button class="update-task">Update Status</button>
+                            <button class="check-tasks">Remove</button>
+                          </div>
                         `;
                         clientCardsWrapper.appendChild(clientCard);
                     });
