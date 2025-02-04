@@ -26,11 +26,12 @@
                 <p>Assign, monitor, and complete tasks efficiently with an intuitive interface to ensure productivity and task completion.</p>
             </div>
 
-            <div class="control-card" data-url="/send-email.html">
-                <div class="card-icon material-icons">email</div>
-                <h3>Send Email</h3>
-                <p>Quickly communicate with your clients by sending professional emails directly from the panel, saving you time and effort.</p>
+            <div class="control-card" data-url="/lead-hub.php">
+                <div class="card-icon material-icons">group</div>
+                <h3>Lead Hub</h3>
+                <p>Manage and nurture your leads effortlessly in one centralized platform. Track interactions, store client details, and streamline your outreach process from start to finish.</p>
             </div>
+
         </div>
 
 
